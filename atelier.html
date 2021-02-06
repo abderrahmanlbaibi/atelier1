@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+      <head>
+            <meta charset="utf-8">
+            <meta name="viewport"content="width=scale-width;initiale-scale=1.0">
+            <style>
+                  
+                  *{
+                        box-sizing: border-box;
+                  }
+                  body{
+                        background-color: rgb(27, 212, 194);
+                        font-family: Arial, Helvetica, sans-serif;
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                        margin: 0;
+                        max-width: 100vh;
+
+                  }
+                  .mainheader{
+                        background-color: snow;
+                        font-family: Arial, Helvetica, sans-serif;
+                        width: 400px;
+                        max-width: 100%;
+                        border-radius: 5px;
+                        box-shadow: 0 3px 7px rgb(0,0,0,3);
+                        overflow: hidden;
+                        align-items: center;
+                  }
+                  .header{
+                        background-color:rgb(226, 229, 230);
+                        padding: 20px 40px;
+                        border-bottom: 1px solid #feece7;
+                        text-align: center;
+                  }
+                  .header h2{
+                        margin: 0;
+                  }
+                  .form{
+                        padding: 30px 40px;
+                  }
+                  .control  {
+                        padding-bottom: 10px;
+                        margin-bottom: 20px;
+                        position: relative;
+                  }
+                  .control label{
+                     font-family: Arial, Helvetica, sans-serif;
+                     font-size: 18px;
+                     margin-bottom: 5px;
+                     display: inline-block;
+                  }
+                  .control input{
+                        border:1px solid #f0f0f0;
+                        display: block;
+                        padding: 12px;
+                        margin: 5px;
+                        font-family: inherit;
+                        font-size: 13px;
+                        border-radius: 4px;
+                        width:100%;
+
+                  }
+                  .control small{
+                        visibility: visible;
+                  }
+                  .control input:hover{
+                     background-color: rgb(221, 248, 250);
+                  }
+                  .control-form option{
+                        padding: 10px;
+                        height: 18px;
+                        margin:8px;
+                        font-size:15px;
+                        border-radius: 4px;
+                        font-family: inherit;
+                        width:100%;
+                        display: inline-block;
+                        background-color: rgb(195, 226, 238);
+                  }
+                  
+                  .control-form label{
+                        background-color: rgb(248, 239, 239);
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                        display: inline-block;
+                        font-family: Arial, Helvetica, sans-serif;
+                        margin: 10px;
+                  }
+                 .control-form .op {
+                       background-color: rgb(236, 21, 21);
+                       font-size: 18px;
+                       font-family: inherit;
+                       margin-bottom: 25px;
+                       display: block;
+                       padding: 10px;
+                       width: 100%;
+                       border: 2px solid rgb(94, 94, 250);border-radius: 3px;
+
+                 }
+                 .valid input{
+                       background-color: rgb(36, 138, 141);
+                       border: 2px solid rgb(48, 192, 192);border-radius: 4px ;
+                       width:100%;
+                       font-size:16px;
+                       font-family: inherit;
+                       display: inline-block;
+                       color:white;
+                       margin-bottom: 17px;padding: 12px; cursor: pointer;    
+                 }
+                 .valid input:hover{
+                       background-color:rgb(7, 104, 104);
+
+                 }
+                 #n1{color:red;font-size: 12px;}
+                 #n2{color:red;font-size: 12px;}
+            </style>
+            <script>
+                function affichercacher(){
+                  let aff=document.querySelector("#aff");
+                  let r1=document.querySelector("#r1");
+                  let r2=document.querySelector("#r2");
+                              
+                      if(r1.checked==true)
+                        {
+                           aff.style.display="block";
+                        }
+                      if(r2.checked==true)
+                        {
+                           aff.style.display="none";
+                        }
+                                        }
+                                        
+                  function valider(){ 
+                        let nom=document.querySelector("#nom");
+                        let p=document.querySelector("#p");
+                        n1.innerHTML="";
+                        let n2=document.querySelector("#n2");
+                        n2.innerHTML="";
+                        let r1=document.querySelector("#r1");
+                        let r2=document.querySelector("#r2");
+                        let aff=document.querySelector("#aff");
+                        if(nom.value=="")
+                        {
+                              n1.innerHTML="ce champs est obligatoire ";
+                              return;
+                        }
+                        let rg=/^[a-z]+$/g;
+                        if(rg.test(nom.value)==false)
+                        {
+                              n1.innerHTML="il doit etre eviter les chiffres et les symbole";
+                              return;
+                        }
+                        if(p.value=="")
+                        {
+                              n2.innerHTML="password est obligatoire";
+                              return;
+                        }
+                  }
+            </script>
+      </head>
+      <body>
+          <div class="mainheader">
+            <form action="/action_page.php"method="post"class="form">
+                  <div class="header">
+                        <h2>formulaire</h2>
+                  </div>
+                  
+                  <div class="control">
+                        <label>username</label>
+                        <input type="text"placeholder="abderrahman "style="color: rgb(75, 74, 74);
+                        font-size: 15px;"id="nom">
+                        <small id="n1">message error</small>
+                  </div>
+                  
+                  <div class="control">
+                        <label>password</label>
+                        <input type="password"id="p">
+                        <small id="n2">message error</small>
+                  </div>
+
+                  <div class="control-form">
+                        <label>afficher div</label>
+                        <input type="radio"name="rad"id="r1"onchange="affichercacher()"><label>oui</label>
+                        <input type="radio"name="rad"id="r2"onchange="affichercacher()"><label>non</label><br>
+                      <div class="op"id="aff">
+                        <div>choisir une ville</div>
+                        <select >
+                          <optgroup label="selectionner une ville">
+                              <option value="1">rabat</option>
+                              <option value="2">casa</option>
+                              <option value="3">beni mellal</option>
+                           </optgroup>
+                        </select><br>
+                       </div>
+                  </div>
+
+                  <div class="valid">
+                        <input type="button"value="se connecter"onclick="valider()">
+                        <input type="reset"value="annuler"id="s2">
+
+                  </div>
+            </form>
+           </div>
+      </body>
+</html>
